@@ -1,0 +1,92 @@
+
+
+<%- include('partials/header'); -%>
+
+<h1 style="text-align:center;">Most Important Topics 😋 </h1>
+<h2 style="text-align:center;">
+    <br> 
+<% topic.forEach(function(topics){ %>
+<li><a href="/question" onclick=getTopic(this)><%= topics.topic %></a></li>
+<% }) %>
+</h2>
+<script>
+    async function  getTopic(id){
+         const topic =  id.innerText;
+         //modify url
+
+         //get topic
+         try {
+             const res = await fetch('/topic',{
+                 method: 'POST',
+                 body: JSON.stringify({topic}),
+                 headers:{'Content-Type': 'application/json'}
+             })
+
+
+         } catch (error) {
+             console.log(error);
+         }
+     }
+     
+ </script>
+
+<%- include('partials/footer'); -%>
+
+
+<!-- <%- include('partials/header'); -%>
+
+<h1>Lets Check Your Progress in following types😎😎</h1>
+
+<ol>
+ <h2> <li><a href="https://www.geeksforgeeks.org/two-dimensional-difference-array/">Arrays</a></li>
+  <li>Linked List</li>
+  <li>Stack</li>
+  <li>Queue</li>
+  <li>Tree</li>
+  <li>Graph</li>
+  </h2>
+</ol>
+<!--
+
+  <ol start="50">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+<ul class="recipes">
+  <li class="recipe">
+    <img src="/smoothie.png" alt="smoothie recipe icon">
+    <h4>Banana Boost</h4>
+    <p>Banana, Vanilla ice cream, Milk</p>
+  </li>
+  <li class="recipe">
+    <img src="/smoothie.png" alt="smoothie recipe icon">
+    <h4>Tropical Twist</h4>
+    <p>Peach, Pinapple, Apple juice</p>
+  </li>
+  <li class="recipe">
+    <img src="/smoothie.png" alt="smoothie recipe icon">
+    <h4>Protein Packer</h4>
+    <p>Oats, Peanut butter, Milk, Banana, Blueberries</p>
+  </li>
+  <li class="recipe">
+    <img src="/smoothie.png" alt="smoothie recipe icon">
+    <h4>Banana Boost</h4>
+    <p>Banana, Vanilla ice cream, Milk</p>
+  </li>
+  <li class="recipe">
+    <img src="/smoothie.png" alt="smoothie recipe icon">
+    <h4>Tropical Twist</h4>
+    <p>Peach, Pinapple, Apple juice</p>
+  </li>
+  <li class="recipe">
+    <img src="/smoothie.png" alt="smoothie recipe icon">
+    <h4>Protein Packer</h4>
+    <p>Oats, Peanut butter, Milk, Banana, Blueberries</p>
+  </li>
+</ul>
+
+
+
+
+<%- include('partials/footer'); -%> -->

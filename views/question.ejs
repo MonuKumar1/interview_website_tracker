@@ -1,0 +1,113 @@
+
+<%- include('partials/header'); -%>
+
+<h1 style="text-align:center;">Most Important Question 😋 </h1>
+<h2 style="text-align:center;">
+    <br> 
+    <% question.forEach(function(questions){ %>
+        <li><a href="<%= questions.LinkTo %> "><%= questions.QuestionName %> </a>  </li>
+        <% }) %>
+</h2>
+
+<br><br><br><br><br><br><br>
+
+    <p>Click on the "Add Question" button to add a new Question</p>
+    <div class="openBtn">
+      <button class="openButton" onclick="openForm()"><strong>Add Question</strong></button>
+    </div>
+    <div class="loginPopup">
+      <div class="formPopup" id="popupForm">
+        <form action="/action_page.php" class="formContainer">
+          <h3 style="color: crimson;">Add Question here😀</h3>
+           
+          <!-- <label for="topic">
+            <strong>topic</strong>
+          </label>
+          <input type="text" id="topic" placeholder="topic" name="topic" required> -->
+          
+          <label for="quet">
+            <strong style="font-size: larger;">Question Topic</strong>
+          </label>
+         
+          <select  style="font-size:22px; color: rgb(120, 125, 134);" id="options" type="text" name="topic" required class="username form-control" >
+            <option value="" hidden>--Select Topic--</option>
+        <% topic.forEach(element=> {  %>
+            <% var i=2 %> 
+            <option value="<%=i%>"><%= element.topic %></option> 
+            <% i += 1 %> 
+        <% }); %> 
+    </select>
+  
+
+          <label for="quen">
+            <strong style="font-size: larger;">QuestionName</strong>
+          </label>
+          <input type="text" id="quen" placeholder="Question Name" name="QuestionName" required>
+
+          <label for="ques">
+            <strong style="font-size: larger;">Question Link</strong>
+          </label>
+          <input type="text" id="ques" placeholder="Question Link" name="ques" required>
+
+          
+         
+
+
+
+          <button type="submit" class="btn">Add Question</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+      }
+    </script>
+
+
+
+<%- include('partials/footer'); -%>
+
+<script>
+  const form = document.querySelector('form');
+
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+
+
+    // get values
+  //  const topic = form.topic.value;
+    const QuestionName = form.QuestionName.value;
+    const ques=form.ques.value;
+    const option = document.getElementById("options");
+                        const str = option.options[option.selectedIndex].text;
+                        const topic = str;
+
+    try {
+      const res = await fetch('/added', { 
+        method: 'POST', 
+        body: JSON.stringify({ topic, QuestionName,ques }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      // const data = await res.json();
+      // console.log(data);
+      // if (data.errors) {
+      //   emailError.textContent = data.errors.email;
+      //   passwordError.textContent = data.errors.password;
+      // }
+      // if (data.user) {
+      //   location.assign('/');
+      // }
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>

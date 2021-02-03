@@ -1,0 +1,97 @@
+.l-1{
+    width: 70%; 
+    margin:100px auto;
+    background-color: rgb(250, 242, 125);
+    border-radius: 20px;
+  }
+  
+  
+  .partners__companies {
+    width: 1060px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 50px;
+  }
+  
+  .partners__companies-icon {
+      margin: 1rem 2rem;
+      -webkit-transition: -webkit-transform 0.8s;
+      transition: -webkit-transform 0.8s;
+      transition: transform 0.8s;
+      transition: transform 0.8s, -webkit-transform 0.8s;
+  }
+  
+  .company {
+      background-size: 11228px 70px;
+      /* background-size: 5614px 37px; */
+      background-image: url(https://assets.scaler.com/assets/techversity/png/companies-1f151e12b46b67cdccf51b446e2de31795d96b5eca6d40a395b75d46eb08ef6f.png);
+      background-repeat: no-repeat;
+      display: block;
+      transition: transform .5s ease;
+      
+  }
+  
+  
+  .companies {
+      background-size: 11228px 74px;
+      /* background-size: 5614px 37px; */
+      background-image: url(https://assets.scaler.com/assets/techversity/png/companies-1f151e12b46b67cdccf51b446e2de31795d96b5eca6d40a395b75d46eb08ef6f.png);
+      background-repeat: no-repeat;
+      display: block;
+      transition: transform .5s ease;
+      
+  }
+  .companies:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  
+  
+  .google {
+      height: 72px;
+      width: 137px;
+      background-position: -2417px;
+    
+  }
+  
+  
+  .amazon {
+      height: 72px;
+      width: 135px;
+      background-position: -5514px;
+  }
+  .microsoft{
+      height: 72px;
+      width: 157px;
+      background-position: -2969px;
+  }
+  .flipkart{
+      height: 72px;
+      width: 174px;
+      background-position: -1973px;
+  }
+  
+  .goldman {
+      height: 72px;
+      width: 142px;
+      background-position: -2273px;
+  }
+  .walmart {
+      height: 72px;
+      width: 177px;
+      background-position: -5061px;
+  }
+  .uber {
+      height: 72px;
+      width: 103px;
+      background-position: -4956px;
+  }
+  .ola {
+      height: 72px;
+      width: 116px;
+      background-position: -3586px;
+  }
+  .abcd{
+      margin-top: 80px;
+  }

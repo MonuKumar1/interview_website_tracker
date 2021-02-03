@@ -1,0 +1,120 @@
+<%- include('partials/header'); -%>
+
+<h1 style="text-align: center;">Hello Everyone😀</h1>
+<!-- <p>Click on the "Add Experience" button to add your Experience</p> -->
+    <div class="openBtn">
+      <button   class="openButton" onclick="openForm()"><strong >Share Your Experience</strong></button>
+    </div>
+    <div class="loginPopup">
+      <div class="formPopup" id="popupForm">
+        <form class="formContainer">
+
+          
+          <h3 style="color: crimson;">Add Experience here😀</h3>       
+      
+          <label for="quet">
+             <!-- <strong style="font-size: larger;">Name</strong>  -->
+          </label> 
+          <input type="text" id="quen" placeholder="Name" name="Name" required>
+
+          <label for="quet">
+             <!-- <strong style="font-size: larger;">Image</strong>  -->
+          </label> 
+          <input type="text" id="quen" placeholder="Image Link" name="Image" required>
+           <label for="quen">
+             <!-- <strong style="font-size: larger;">Your Experience</strong>  -->
+          </label> 
+          <input type="text" id="quen" placeholder="Your Experience" name="Experience" required>
+
+          <label for="ques">
+             <!-- <strong style="font-size: larger;">Link</strong>  -->
+          </label>
+          <input type="text" id="ques" placeholder="Link" name="Link" required>
+          <select  style="font-size:22px; color: rgb(120, 125, 134);" id="options" type="text" name="Company" required class="username form-control" >
+            <option value="" hidden>--Select Company--</option>
+            <option value="Google">Google</option>
+            <option value="Amazon">Amazon</option>
+            <option value="Microsoft">Microsoft</option>
+            <option value="Flipkart">Flipkart</option>
+            <option value="GoldmanSachs">Goldman Sachs</option>
+       
+    </select>
+          <button type="submit" class="btn">Add Experince</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+      }
+    </script>
+    <div class='abcd'>
+
+<% items.forEach(function(element) { %>
+     <div class="center">
+      <div class="topic">
+        <img src="<%= element.Image %>" alt="">
+      </div>
+      
+     <h1>  <%= element.Name %></h1><br><br>
+      
+    <h2> <p>Company:->  <%= element.Company %><br></p><br>
+      <%= element.Experience %><br><br>
+      </div>
+     <h3>Click Here To Know More... <a style="color: blue;" href="<%= element.Link %> "> <%= element.Link %></a> </h3>
+      <br><br><br><br><br><br>
+       
+        
+
+     </h2>
+<% }) %>
+    </div>
+
+<%- include('partials/footer'); -%>
+
+<script>
+  const form = document.querySelector('form');
+
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+
+
+    // get values
+  //  const topic = form.topic.value;
+    const Name = form.Name.value;
+    const Image=form.Image.value;
+    const Company=form.Company.value;
+    const Experience=form.Experience.value;
+    const Link=form.Link.value;
+  
+
+    try {
+      const res = await fetch('/thanku', { 
+        method: 'POST', 
+        body: JSON.stringify({ Name,Image,Company,Experience,Link }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      // const data = await res.json();
+      // console.log(data);
+      // if (data.errors) {
+      //   emailError.textContent = data.errors.email;
+      //   passwordError.textContent = data.errors.password;
+      // }
+      // if (data.user) {
+      //   location.assign('/');
+      // }
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>
+
+

@@ -1,0 +1,52 @@
+<%- include('partials/header'); -%>
+
+
+
+<h1>Hello companies are here</h1>
+<div class="l-1">
+
+    
+
+    <div class="career__section">
+
+        <div class="partners__description">
+
+            <div class="partners__companies">
+                    <a href="/experience/google"><span onclick="getID(this)"; class="partners__companies-icon companies google "></span></a>
+
+                    <a href="/experience/amazon"><span onclick="getID(this)"; class="partners__companies-icon companies amazon "></span></a>
+
+                    <a href="/experience/microsoft"><span onclick="getID(this)"; class="partners__companies-icon companies microsoft "></span></a>
+
+                    <a href="/experience/flipkart"><span onclick="getID(this)"; class="partners__companies-icon companies flipkart "></span></a>
+
+                    <a href="/experience/goldman"><span onclick="getID(this)"; class="partners__companies-icon companies goldman"></span></a>
+
+                    <!-- <a href="/experience/walmart"><span onclick="getID(this)"; class="partners__companies-icon companies walmart "></span></a> -->
+
+                    <!-- <a href="/experience/ola"><span onclick="getID(this)" ; class="partners__companies-icon companies ola "></span></a> -->
+
+                   <!-- <a href="/experience/uber"> <span onclick="getID(this)" ; class="partners__companies-icon companies uber "></span></a> -->
+
+<script>
+                        const getID = async(id)=>{
+                            const companyName = id.classList[2];
+                            const c_name = companyName.charAt(0).toUpperCase() + companyName.slice(1);
+                             console.log(companyName,c_name);
+                            try {
+
+                                const res = await fetch('/company',{
+                                    method:"POST",
+                                    body: JSON.stringify({c_name}),
+                                    headers: { 'Content-Type': 'application/json' }
+
+                                })
+
+                            }
+                             catch (error) {
+                                console.log(error);
+                            }
+
+                        }
+                    </script>
+<%- include('partials/footer'); -%>
