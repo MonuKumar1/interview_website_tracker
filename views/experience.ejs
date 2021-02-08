@@ -93,7 +93,7 @@
     const Experience=form.Experience.value;
     const Link=form.Link.value;
   
-
+form.reset();
     try {
       const res = await fetch('/thanku', { 
         method: 'POST', 
